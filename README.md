@@ -469,3 +469,56 @@ aws ec2 modify-instance-metadata-options \
 ### Private Registry (Amazon ECR)
 
 See `registries.yml` for the ECR configuration. The recommended approach on EC2 is to attach the `AmazonEC2ContainerRegistryReadOnly` IAM policy to the instance profile — no static credentials are needed.
+
+# Assignment 1 — Liyema
+Student Name: Liyema Kwaza  
+Student Number: 221189785  
+
+## System Requirements
+
+The K3s high-availability cluster was deployed on AWS EC2 instances.
+
+- Cloud Platform: AWS EC2
+- Instance Type: t3.large
+- CPU: 2 vCPU
+- RAM: 50 GB
+- Operating System: Ubuntu 22.04 LTS
+- Kubernetes Distribution: K3s
+- Container Runtime: containerd
+- Networking: Flannel (VXLAN)
+
+
+## Architecture Explanation
+
+K3s is a lightweight Kubernetes distribution designed to simplify deployment and operation while using fewer resources.  
+
+In this assignment, three EC2 instances were configured as control plane (master) nodes forming a high-availability cluster using embedded etcd to store cluster state. Worker nodes can be added to run application workloads and communicate with the control plane.  
+
+The control plane manages the cluster and schedules workloads. K3s uses containerd as the container runtime, Flannel (CNI) for pod networking, and an ingress/load balancer for external access. Persistent storage is provided via the local-path provisioner.
+
+
+
+## Evidence of Deployment
+
+### Kubernetes Nodes
+![kubectl nodes](images/nodes.png)
+
+### Running Pods
+![kubectl pods](images/pods.png)
+
+### AWS EC2 Instances
+![aws ec2](images/aws.png)
+
+### Successful K3s Installation
+![install](images/install.png)
+
+
+## Reflection
+
+This assignment taught me how to deploy a lightweight Kubernetes cluster on AWS and understand its components. I learned how to configure EC2 instances, networking, and security so that nodes can communicate.  
+
+I also gained insight into Kubernetes architecture: control plane nodes maintain cluster state using etcd, while worker nodes run application workloads. K3s simplifies this process by combining components and reducing resource usage.  
+
+A challenge was ensuring correct networking between nodes. I solved this by validating security group rules and hostname resolution.  
+
+This experience helped me understand how K3s relates to production Kubernetes and 5G cloud-native systems. Virtualization via EC2 and containerization allow scalable, consistent deployment of applications, while Kubernetes orchestrates workloads for high availability and efficiency.
