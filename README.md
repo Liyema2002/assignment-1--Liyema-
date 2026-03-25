@@ -501,6 +501,7 @@ The control plane manages the cluster and schedules workloads. K3s uses containe
 ## Evidence of Deployment
 
 ### Kubernetes Nodes
+![WhatsApp Image 2026-03-25 at 21 37 22](https://github.com/user-attachments/assets/51e98759-26e9-40a4-be27-f574c4f723a3)
 
 
 ### Running Pods
