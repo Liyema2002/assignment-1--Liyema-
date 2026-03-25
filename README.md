@@ -121,8 +121,8 @@ Record the values — you will need them throughout this guide:
 | Hostname | Private IP | Public IP |
 |----------|------------|-----------|
 | k3s-master-1 | 172.31.46.180 | 54.164.109.57 |
-| k3s-master-2 | 10.0.x.x | 1.2.3.5 |
-| k3s-master-3 | 10.0.x.x | 1.2.3.6 |
+| k3s-master-2 |172.31.86.188| 44.205.248.32 |
+| k3s-master-3 | 172.31.40.62 | 54.161.21.82|
 
 ---
 
@@ -498,19 +498,20 @@ The control plane manages the cluster and schedules workloads. K3s uses containe
 
 
 
-## Evidence of Deployment
+## Evidence of Deployment (Screenshots)
 
-### Kubernetes Nodes
+### 
 ![WhatsApp Image 2026-03-25 at 21 37 22](https://github.com/user-attachments/assets/51e98759-26e9-40a4-be27-f574c4f723a3)
 
 
-### Running Pods
+### 
+![WhatsApp Image 2026-03-25 at 22 10 11 (2)](https://github.com/user-attachments/assets/db50193c-d79c-4d3a-9519-9398b70affad)
 
 
-### AWS EC2 Instances
+### 
 
 
-### Successful K3s Installation
+### 
 ![WhatsApp Image 2026-03-25 at 21 18 45](https://github.com/user-attachments/assets/2024b96f-5df3-4026-bcc9-46d0b1a3cb40)
 
 
