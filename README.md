@@ -501,16 +501,17 @@ The control plane manages the cluster and schedules workloads. K3s uses containe
 ## Evidence of Deployment
 
 ### Kubernetes Nodes
-![kubectl nodes](images/nodes.png)
+
 
 ### Running Pods
-![kubectl pods](images/pods.png)
+
 
 ### AWS EC2 Instances
-![aws ec2](images/aws.png)
+
 
 ### Successful K3s Installation
-![install](images/install.png)
+![WhatsApp Image 2026-03-25 at 21 18 45](https://github.com/user-attachments/assets/2024b96f-5df3-4026-bcc9-46d0b1a3cb40)
+
 
 
 ## Reflection
