@@ -515,10 +515,12 @@ Storage: Embedded etcd is used to store cluster state, providing fault tolerance
 
 ### 
 ![221189785-Liyema_Kwaza (3)](https://github.com/user-attachments/assets/9fcb8678-dd60-4b2b-a280-05a9a74ab5c2)
+![221189785-Liyema_Kwaza](https://github.com/user-attachments/assets/2ac6cb3c-6bb9-40a3-8012-d546a61c0333)
 
 
 ### 
 ![221189785-Liyema_Kwaza (8)](https://github.com/user-attachments/assets/1c46a531-6c1f-47ed-ae8d-538a46333267)
+![221189785-Liyema_Kwaza (4)](https://github.com/user-attachments/assets/d49f8361-2910-414f-9f7f-5e1495750f4e)
 
 
 
