@@ -121,8 +121,8 @@ Record the values — you will need them throughout this guide:
 | Hostname | Private IP | Public IP |
 |----------|------------|-----------|
 | k3s-master-1 | 172.31.17.221 | 18.234.195.1597 |
-| k3s-master-2 |172.31.86.188| 44.205.248.32 |
-| k3s-master-3 | 172.31.40.62 | 54.161.21.82|
+| k3s-master-2 |172.31.31.138| 54.196.153.194 |
+| k3s-master-3 | 172.31.28.185 | 54.144.230.244|
 
 ---
 
@@ -490,38 +490,49 @@ The K3s high-availability cluster was deployed on AWS EC2 instances.
 
 ## Architecture Explanation
 
-K3s is a lightweight Kubernetes distribution designed to simplify deployment and operation while using fewer resources.  
+K3s is a lightweight version of Kubernetes designed for environments with limited resources. It simplifies deployment by packaging Kubernetes components into a single binary while still providing core functionality. It is used in this project because it is efficient, easy to set up, and suitable for running on AWS EC2 instances.
 
-In this assignment, three EC2 instances were configured as control plane (master) nodes forming a high-availability cluster using embedded etcd to store cluster state. Worker nodes can be added to run application workloads and communicate with the control plane.  
-
-The control plane manages the cluster and schedules workloads. K3s uses containerd as the container runtime, Flannel (CNI) for pod networking, and an ingress/load balancer for external access. Persistent storage is provided via the local-path provisioner.
-
-
-
+Key Components
+Control Plane: Manages the cluster (API server, scheduler, controller manager). All three nodes act as control plane nodes for high availability.
+Agents: Each node also functions as a worker, running application workloads.
+Container Runtime: Uses containerd to run containers.
+CNI: Flannel is used for networking between pods across nodes.
+Ingress / Load Balancer: Traefik and ServiceLB were disabled to allow use of NGINX Ingress and AWS load balancing.
+Storage: Embedded etcd is used to store cluster state, providing fault tolerance.
+ 
 ## Evidence of Deployment (Screenshots)
 
 ### 
-![WhatsApp Image 2026-03-25 at 21 37 22](https://github.com/user-attachments/assets/51e98759-26e9-40a4-be27-f574c4f723a3)
+![221189785-Liyema_Kwaza (2)](https://github.com/user-attachments/assets/7930e581-2a83-4079-9cf7-a86717626d67)
 
-
-### 
-![WhatsApp Image 2026-03-25 at 22 10 11 (2)](https://github.com/user-attachments/assets/db50193c-d79c-4d3a-9519-9398b70affad)
 
 
 ### 
+![221189785-Liyema_Kwaza (6)](https://github.com/user-attachments/assets/e3040b81-cdc4-4ef2-bf80-1617b9b3a5fb)
+
+![221189785-Liyema_Kwaza (5)](https://github.com/user-attachments/assets/7066cbdd-db55-4572-866a-6502cf1efa25)
 
 
 ### 
-![WhatsApp Image 2026-03-25 at 21 18 45](https://github.com/user-attachments/assets/2024b96f-5df3-4026-bcc9-46d0b1a3cb40)
+![221189785-Liyema_Kwaza (3)](https://github.com/user-attachments/assets/9fcb8678-dd60-4b2b-a280-05a9a74ab5c2)
+
+
+### 
+![221189785-Liyema_Kwaza (8)](https://github.com/user-attachments/assets/1c46a531-6c1f-47ed-ae8d-538a46333267)
+
 
 
 
 ## Reflection
 
-This assignment taught me how to deploy a lightweight Kubernetes cluster on AWS and understand its components. I learned how to configure EC2 instances, networking, and security so that nodes can communicate.  
+This assignment helped me gain practical experience in deploying a Kubernetes cluster using K3s on AWS. I learned how to set up a high-availability control plane using three nodes with embedded etcd, which ensures the cluster remains operational even if one node fails. This improved my understanding of distributed systems, fault tolerance, and how Kubernetes manages cluster state across multiple machines.
 
-I also gained insight into Kubernetes architecture: control plane nodes maintain cluster state using etcd, while worker nodes run application workloads. K3s simplifies this process by combining components and reducing resource usage.  
+One of the main challenges I faced was configuring the networking correctly between the nodes. Initially, I used incorrect placeholder IP addresses, which prevented the nodes from joining the cluster. I resolved this by verifying the correct private IP addresses assigned by AWS and updating the configuration files and host mappings. This taught me the importance of accurate configuration when working with cloud infrastructure.
 
-A challenge was ensuring correct networking between nodes. I solved this by validating security group rules and hostname resolution.  
+Another challenge was accessing the EC2 instances from my Windows machine. AWS provides SSH keys in .pem format, which are not directly compatible with PuTTY. To solve this, I used PuTTYgen to convert the .pem file into a .ppk format so that I could securely connect to the instances. This step was essential for managing the servers and completing the deployment.
 
-This experience helped me understand how K3s relates to production Kubernetes and 5G cloud-native systems. Virtualization via EC2 and containerization allow scalable, consistent deployment of applications, while Kubernetes orchestrates workloads for high availability and efficiency.
+K3s is closely related to production Kubernetes but is optimized for lightweight and resource-constrained environments. It still includes the core Kubernetes components, making it suitable for real-world use cases such as edge computing and 5G cloud-native applications. In these environments, efficiency and fast deployment are important, and K3s provides a simplified way to achieve this while maintaining Kubernetes functionality.
+
+Virtualization and containerization are key technologies that enable scalable services. Virtual machines, such as AWS EC2 instances, allow multiple isolated systems to run on shared physical hardware. Containers further improve this by packaging applications and their dependencies into portable units that can run consistently across environments. Kubernetes orchestrates these containers, enabling automatic scaling, load balancing, and high availability.
+
+Overall, this assignment strengthened my understanding of cloud computing, Kubernetes architecture, and real-world deployment challenges, while also improving my problem-solving skills.
